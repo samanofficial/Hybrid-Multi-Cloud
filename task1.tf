@@ -46,7 +46,7 @@ resource "aws_instance" "myin" {
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("C:/Users/singh/Downloads/AWS-key.pem")
+    private_key = file("C:/Users/singh/Downloads/saman.pem")
     host     = aws_instance.myin.public_ip
   }
 
@@ -112,7 +112,7 @@ resource "aws_s3_bucket_object" "object"{
   bucket = aws_s3_bucket.mybucket.bucket
   acl = "public-read"
   key = "sample.png"
-  source = "C:/Users/mangl/Desktop/terraform/mytest/images/sample.png"
+  source = "C:/Users/singh/Desktop/terraform/task1/images/sample.png"
   
 }
 
@@ -158,7 +158,7 @@ resource "null_resource" "nullremote3" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = file("C:/Users/mangl/Downloads/AWS-key.pem")
+    private_key = file("C:/Users/singh/Downloads/saman.pem")
     host = aws_instance.myin.public_ip
   }
   
@@ -167,7 +167,7 @@ resource "null_resource" "nullremote3" {
       "sudo mkfs.ext4  /dev/xvdh",
       "sudo mount  /dev/xvdh  /var/www/html",
       "sudo rm -rf /var/www/html/*",
-      "sudo git clone https://github.com/Mangalofficial/Cloud_instance.git /var/www/html/",
+      "sudo git clone https://github.com/samanofficial/Hybrid-Multi-Cloud.git /var/www/html/",
       "sudo su << EOF",
             "echo \"<img src=\"https://\"${aws_cloudfront_distribution.s3_distribution.domain_name}\"/sample.png\">\" >> /var/www/html/index.html",
             "EOF",
