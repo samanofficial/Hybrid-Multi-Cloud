@@ -1,6 +1,6 @@
 provider "aws" {
   region = "ap-south-1"
-  profile = "manglam"
+  profile = "aman"
 }
 
 resource "aws_security_group" "my_security1" {
@@ -40,13 +40,13 @@ resource "aws_security_group" "my_security1" {
 resource "aws_instance" "myin" {
   ami           = "ami-0447a12f28fddb066"
   instance_type = "t2.micro"
-  key_name = "AWS-key"
+  key_name = "saman"
   security_groups = ["my_security1"]
 
   connection {
     type     = "ssh"
     user     = "ec2-user"
-    private_key = file("C:/Users/mangl/Downloads/AWS-key.pem")
+    private_key = file("C:/Users/singh/Downloads/AWS-key.pem")
     host     = aws_instance.myin.public_ip
   }
 
@@ -58,13 +58,13 @@ resource "aws_instance" "myin" {
     ]
   }
   tags = {
-    Name = "Manglam-OS"
+    Name = "aman-OS"
   }
 }
 
 resource "null_resource" "image"{
   provisioner "local-exec" {
-    command = "git clone https://github.com/Mangalofficial/Cloud_instance.git images"
+    command = "git clone https://github.com/samanofficial/Hybrid-Multi-Cloud.git images"
   }
 }
 
@@ -96,11 +96,11 @@ resource "null_resource" "nulllocal2"  {
 
 
 resource "aws_s3_bucket" "mybucket" {
-  bucket = "manglam420"
+  bucket = "aman100"
   acl    = "public-read"
   region = "ap-south-1"
   tags = {
-    Name = "manglam_bucket420"
+    Name = "aman_bucket100"
   }
 }
 locals {
